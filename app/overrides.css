@@ -1,0 +1,40 @@
+body {
+  background: #A4A4A4;
+  padding-top: 120px;
+}
+
+.panel-success>.panel-heading, .panel-footer {
+  background: #0f9d58;
+  color: #E0F8E0;
+  border: 1px solid #0f9d58;
+}
+
+.panel-footer>a {
+  text-decoration: none;
+  color: #E0F8E0;
+}
+
+.panel-success {
+  border: none;
+}
+
+.panel, .navbar {
+  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+}
+
+.navbar {
+  padding-right: 20px;
+}
+
+.navbar-brand {
+  font-size: 40px;
+}
+
+.opaque {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+form {
+  transition: 0.5s;
+}
