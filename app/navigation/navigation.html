@@ -13,7 +13,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li ><a ng-show="register.show" href="#/register">Register</a></li>
             <li><a ng-if="!user" href="#/register">Welcome {{user.name}}</a></li>
-            <li><a ng-if="!user" href="#" ng-click="logout()">Logout</a></li>
+            <li><a ng-if="user" href="#" ng-click="logout()">Logout</a></li>
         </ul>
     </div>
 </div>

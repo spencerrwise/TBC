@@ -11,7 +11,6 @@ app.directive('editForm', function() {
           });
 
           $('#hideForm').bind('click', function() {
-            console.log('omg');
             $('form').addClass('opaque')
           })
         }

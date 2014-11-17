@@ -1,32 +1,32 @@
 var app = angular.module('tbc');
 
-app.controller('DashboardController', function ($scope, firebaseService, $location, userReference, hostRefrence, $firebase, $rootScope, $cookieStore, authService) {
+app.controller('DashboardController', function ($scope, firebaseService, $location, $firebase, $rootScope, $cookieStore, authService) {
 
+  var getCurrentUser = function(){
+    return authService.getCurrentUser();
+  }
 
+  $scope.auth = getCurrentUser();
+  console.log('auth ', $scope.auth);
 
-  var ref = new Firebase("https://tbc.firebaseio.com/");
-  var sync = $firebase(ref);
-
-  $scope.user = $cookieStore.get('currentUser');
-
-  var isLoggedIn = function() {
-    var url = $location.url();
-    var id = url[url.length - 1];
-    $scope.user = firebaseService.getUser(id);
-    return $scope.user
+  var parseId = function() {
+    var arr = $scope.auth.uid.split('');
+    var id = [];
+    for (var i = 0; i < arr.length; i++) {
+      if(parseInt(arr[i])) {
+        id.push(arr[i])
+      }
+    };
+    id = id.join('');
+    $scope.id = id;
   }();
 
-  
-  $scope.createRoom = function() {
-    sync.$set({name: $scope.user.room});
-    $scope.user.$save();
-    $scope.room = '';
-  }
+  var setUser = function() {
+    return firebaseService.getUser($scope.id)
+  };
 
-  $scope.logout = function() {
-    $scope.user = '';
-    $location.path('/')
-  }
+  $scope.user = setUser();
+  console.log('$user: ', $scope.user);
 
 
 

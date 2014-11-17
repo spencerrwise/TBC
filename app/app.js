@@ -15,17 +15,9 @@ $routeProvider
     templateUrl: 'app/auth/registration/register.html',
     controller: 'RegistrationController'
   })
-  .when('/dashboard/:userId', {
+  .when('/dashboard', {
     templateUrl: 'app/dashboard/dashboard.html',
-    controller: 'DashboardController',
-    resolve: {
-      userReference: function(firebaseService, $route){
-        return firebaseService.getUser($route.current.params.userId);
-      },
-      hostRefrence: function(firebaseService, $route){
-        return firebaseService.getHost($route.current.params.userId);
-      }
-    }
+    controller: 'DashboardController'
   })
   .otherwise({
     redirectTo: '/'

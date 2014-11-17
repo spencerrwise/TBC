@@ -28,6 +28,13 @@ app.service('authService', function(){
       }
     });
   }
+  this.getCurrentUser = function() {
+    return firebaseLogin.getAuth();
+  }
+
+  this.logout = function() {
+    firebaseLogin.unauth();
+  }
 
 
   this.register = function(user, cb){
